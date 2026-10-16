@@ -10,22 +10,24 @@
 
 <body>
 
-  <header>
-    <h1>Quick Notes</h1>
-    <p>Capture, search, edit, rearrange and delete your notes.</p>
+  <header class="app-header">
+    <div class="header-container">
+      <h1>Quick Notes</h1>
+      <p>Capture, search, edit, rearrange and delete your notes.</p>
+    </div>
   </header>
 
-  <main>
-    <section id="add-section" aria-labelledby="add-heading">
+  <main class="main-container">
+    <section id="add-section" class="card" aria-labelledby="add-heading">
       <h2 id="add-heading">Add a Note</h2>
 
       <form id="note-form" novalidate>
-        <div>
+        <div class="form-group">
           <label for="note-input">Note</label>
-          <input type="text" id="note-input" name="note" placeholder="Write your note here..." autocomplete="off">
+          <textarea id="note-input" name="note" rows="8" placeholder="Write your note here... a sentence, a paragraph, or more."></textarea>
         </div>
 
-        <div>
+        <div class="form-group">
           <label for="note-category">Category</label>
           <select id="note-category" name="category">
             <option value="personal">Personal</option>
@@ -35,14 +37,15 @@
           </select>
         </div>
 
-        <button type="submit">Add Note</button>
+        <button type="submit" class="btn submit-btn">Add Note</button>
       </form>
       <p id="error-message" role="alert" aria-live="assertive"></p>
     </section>
-    <section id="notes-section" aria-labelledby="notes-heading">
+
+    <section id="notes-section" class="card" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Your Notes</h2>
 
-      <div>
+      <div class="form-group search-group">
         <label for="search-input">Search notes</label>
         <input type="search" id="search-input" name="search" placeholder="Search saved notes..." autocomplete="off">
       </div>
@@ -54,21 +57,33 @@
 
   </main>
 
-  <footer>
-    <p>&copy; 2026 Quick Notes</p>
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>
+        &copy; 2026 Quick Notes
+        &bull;
+        <a href="#privacy">Privacy</a>
+        &bull;
+        <a href="#terms">Terms</a>
+        &bull;
+        <a href="#help">Help</a>
+      </p>
+    </div>
   </footer>
+
   <template id="note-template">
     <li class="note-item">
       <span class="note-text"></span>
       <span class="note-category"></span>
       <div class="note-actions">
-        <button type="button" class="move-up" aria-label="Move note up">&uarr;</button>
-        <button type="button" class="move-down" aria-label="Move note down">&darr;</button>
-        <button type="button" class="edit-btn">Edit</button>
-        <button type="button" class="delete-btn">Delete</button>
+        <button type="button" class="btn move-up" aria-label="Move note up">&uarr;</button>
+        <button type="button" class="btn move-down" aria-label="Move note down">&darr;</button>
+        <button type="button" class="btn edit-btn">Edit</button>
+        <button type="button" class="btn delete-btn">Delete</button>
       </div>
     </li>
   </template>
+
   <script src="script.js"></script>
 </body>
 
