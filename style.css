@@ -1,0 +1,386 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--body-bg);
+    /* Document body background set to wheat */
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header,
+.app-header {
+    background: var(--header-gradient);
+    color: var(--text-inverse);
+    padding: 2.25rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(13, 59, 102, 0.2);
+}
+
+.header-container {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+header h1,
+.app-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0.4rem;
+}
+
+header p,
+.app-header p {
+    font-size: 1.05rem;
+    color: #ffffff;
+    opacity: 0.95;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Layout & Cards */
+main,
+.main-container {
+    flex: 1;
+    width: 100%;
+    max-width: 860px;
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+section,
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(210, 180, 140, 0.35);
+}
+
+section h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0d3b66;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eef2f6;
+}
+
+/*  Form & Input Controls  */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group,
+form>div,
+#notes-section>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+input[type="text"],
+input[type="search"],
+textarea,
+select {
+    background-color: var(--input-bg);
+    /* Solid white */
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+textarea {
+    min-height: 180px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--focus-border);
+    outline: none;
+    box-shadow: 0 0 0 3.5px var(--focus-ring);
+}
+
+/* -Buttons  */
+button,
+input[type="submit"],
+.btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
+    border-radius: 8px;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+button:hover,
+input[type="submit"]:hover,
+.btn:hover {
+    background-color: var(--btn-bg-hover);
+    border-color: #5bbd5a;
+    box-shadow: 0 3px 8px rgba(18, 56, 22, 0.16);
+    transform: translateY(-1px);
+}
+
+button:active,
+input[type="submit"]:active,
+.btn:active {
+    background-color: var(--btn-bg-active);
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(18, 56, 22, 0.2);
+}
+
+/* Keyboard accessibility outline */
+button:focus-visible,
+input[type="submit"]:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid #0d3b66;
+    outline-offset: 2px;
+}
+
+/* Form submission button specific style */
+#note-form button[type="submit"] {
+    align-self: flex-start;
+    margin-top: 0.35rem;
+}
+
+/* Error message display */
+#error-message {
+    margin-top: 0.65rem;
+    color: #b91c1c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 1.2rem;
+}
+
+/* Notes List & Dynamic Items */
+.search-group {
+    margin-bottom: 1.25rem;
+}
+
+#note-count {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+#notes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.note-item {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #0d3b66;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.note-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.note-text {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-primary);
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.note-category {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    white-space: nowrap;
+}
+
+.note-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Action buttons inside note cards */
+.note-actions button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Footer */
+footer,
+.app-footer {
+    background: var(--footer-gradient);
+    /* Mirrored header gradient in reverse */
+    color: var(--text-inverse);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -4px 14px rgba(13, 59, 102, 0.15);
+}
+
+.footer-container {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+footer p,
+.app-footer p {
+    color: #ffffff;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+footer a,
+.app-footer a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+footer a:hover,
+.app-footer a:hover {
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+footer a:focus-visible,
+.app-footer a:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+
+    header h1,
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    section,
+    .card {
+        padding: 1.25rem 1rem;
+    }
+
+    .note-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .note-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+:root {
+    /* Gradients */
+    --header-gradient: linear-gradient(to right, #0d3b66, #4ea8de);
+    --footer-gradient: linear-gradient(to right, #4ea8de, #0d3b66);
+
+    /* Background Colors */
+    --body-bg: #f5deb3;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+
+    /* Button Colors */
+    --btn-bg: #80e27e;
+    --btn-bg-hover: #6ad668;
+    --btn-bg-active: #58c356;
+    --btn-border: #6fc76d;
+    --btn-text: #123816;
+
+    --text-primary: #1f2937;
+    --text-muted: #4b5563;
+    --text-inverse: #ffffff;
+    --border-subtle: #d1d5db;
+    --focus-ring: rgba(78, 168, 222, 0.45);
+    --focus-border: #0d3b66;
+
+    /* Elevation Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
